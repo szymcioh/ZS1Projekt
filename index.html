@@ -10,7 +10,15 @@
 
         </script>
     </head>
-    <body onload='document.getElementById("haslo").innerHTML = CzyJestTakiZnak("u", "_____", "super");'>
-        <i id="haslo"></i>
+    <body onload=''>
+        <div id="div wprowadz haslo">
+            Wprowadź hasło: <input type="text" id="wprowadz_haslo" value="samolot"><br>
+            <button onclick="wprowadzHaslo();">Gotowe</button>
+        </div>
+        <div id="div zgadywanie" style="visibility: hidden">
+            <p id="haslo1">dfgdfgdfg</p>
+            Wprowadź litere: <input type="text" id="wprowadz_litere"><br>
+            <button onclick='document.getElementById("haslo1").innerHTML = czyJestTakiZnak(document.getElementById("wprowadz_litere").value, document.getElementById("haslo1").innerHTML);'>Sprawdź</button>
+        </div>
     </body>
 </html>
