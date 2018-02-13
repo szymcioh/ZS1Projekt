@@ -1,3 +1,33 @@
+@import "compass/css3";
+
+*, *:before, *:after {
+  margin: 0;
+  box-sizing: border-box;
+}
+.cont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.transitioned {
+  transition: transform 0.5s;
+}
+
+.elementywisielca{
+    width: 30%;
+    height: 30%;
+   
+}
+
+#wisilec{
+    top: 5%;
+    right: 1000px;
+    position: absolute;
+    width: 30%;
+    height: 40%;
+}
+
 body{
     background: #4f5358;
     border: 0;
@@ -81,7 +111,7 @@ header{
     font-family: 'Shadows Into Light Two', cursive;
 }
 
-.alphabet:hover{
+.alphabethover{
     cursor: pointer;
     font-size:1.6em;
     border:solid 2px #a3a3a3;

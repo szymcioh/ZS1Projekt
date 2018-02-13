@@ -1,7 +1,65 @@
 var haslo = "";
 var bledy = 0;
 
-$(document).ready(function(){
+$(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery korzystaja z gotowcow" - Szymon Horzela)
+  var $elementywisielca = $(".elementywisielca"),
+      xPos,
+      yPos;
+  $(document).on("mousedown", ".elementywisielca", function(evt) {
+    $(this).addClass("active").removeClass("transitioned");
+    var realTop = parseInt($(this).offset().top, 10),
+        realLeft = parseInt($(this).offset().left, 10);
+    xPos = evt.pageX - realLeft;
+    yPos = evt.pageY - realTop;
+
+    $(document).on("mousemove", function(e) {
+      if ($elementywisielca.hasClass("active")) {
+        var x = e.pageX,
+            y = e.pageY,
+            realX = x -xPos,
+            realY = y - yPos,
+            newX = realX - realLeft,
+            newY = realY - realTop;
+        $elementywisielca.css("transform", "translateX("+ newX +"px) translateY("+ newY +"px)");
+      };
+    });
+
+    function mouseUpFunc(e) {
+      var x = e.pageX, 
+          y = e.pageY,
+          realX = x - xPos,
+          realY = y - yPos,
+          newX = parseInt(Math.floor((0 - (realX - realLeft))/3), 10),
+          newY = parseInt(Math.floor((0 - (realY - realTop))/3), 10),
+          smallX = parseInt(Math.floor((realX - realLeft)/5), 10),
+          smallY = parseInt(Math.floor((realY - realTop)/5), 10),
+          dispX = parseInt(Math.floor((realX - realLeft)/10), 10),
+          dispY = parseInt(Math.floor((realY - realTop)/10), 10);
+      if ($elementywisielca.hasClass("active")) {
+        $elementywisielca.removeClass("active").addClass("transitioned");
+        if (newX || newY) {
+          $elementywisielca.css("transform", "translateX("+ (newX - dispX) +"px) translateY("+ (newY - dispY) +"px)");
+          setTimeout(function() {
+            $elementywisielca.css("transform", "translateX("+ (newX + dispX) +"px) translateY("+ (newY + dispY) +"px)");
+          }, 380);
+          setTimeout(function() {
+            $elementywisielca.css("transform", "translateX("+ smallX +"px) translateY("+ smallY +"px)");
+          }, 420);
+          setTimeout(function() {
+            $elementywisielca.css("transform", "translateZ(0)");
+          }, 700);
+        }
+      }
+    }
+
+    $(document).on("mouseup", function(e) {
+      mouseUpFunc(e);
+    });
+
+    return false; 
+  });
+});  //Koniec gotowca
+
     $("#password_button").click(function(){
         var diviniation = $("#password");
         diviniation.animate({
@@ -21,6 +79,14 @@ $(document).ready(function(){
         else
             diviniation.removeClass('alphabet').addClass('alphabetFalse');
     });
+    
+    $( ".alphabet" ).hover(
+      function() {
+        $( this ).addClass( "alphabethover" );
+      }, function() {
+        $( this ).removeClass( "alphabethover" );
+      }
+    );
     
 });
 
