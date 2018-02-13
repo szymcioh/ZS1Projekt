@@ -4,21 +4,63 @@
         <meta charset="utf-8">
         <title>
             <!-- Wersja 0.0.1 -->
-            ZS1</title>
+            Wisilec</title>
         <link rel="stylesheet" href="style.css">
-        <script type="text/javascript" src="script.js">
-
-        </script>
+        <script type="text/javascript" src="script.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
     </head>
     <body onload=''>
-        <div id="div wprowadz haslo">
-            Wprowadź hasło: <input type="text" id="wprowadz_haslo" value="samolot"><br>
-            <button onclick="wprowadzHaslo();">Gotowe</button>
+        <header>
+            <h1>Wisiele_</h1>
+        </header>
+        
+        <div id="content">
+
+            <div id="div wprowadz haslo">
+                Wprowadź hasło: <input type="text" id="wprowadz_haslo" value="samolot"><br>
+                <button onclick="wprowadzHaslo();">Gotowe</button>
+            </div>
+
+            <div id="div zgadywanie" style="visibility: hidden">
+                <p id="haslo1">dfgdfgdfg</p>
+                Wprowadź litere: <input type="text" id="wprowadz_litere"><br>
+                <button onclick='document.getElementById("haslo1").innerHTML = czyJestTakiZnak(document.getElementById("wprowadz_litere").value, document.getElementById("haslo1").innerHTML);'>Sprawdź</button>
+                
+            </div>
+            
+            <div id="buttons">
+                <button class="alphabet">A</button>
+                <button class="alphabet">Ą</button>
+                <button class="alphabet">B</button>
+                <button class="alphabet">C</button>
+                <button class="alphabet">Ć</button>
+                <button class="alphabet">D</button>
+                <button class="alphabet">E</button>
+                <button class="alphabet">Ę</button>
+                <button class="alphabet">F</button>
+                <button class="alphabet">G</button>
+                <button class="alphabet">H</button>
+                <button class="alphabet">I</button>
+                <button class="alphabet">J</button>
+                <button class="alphabet">K</button>
+                <button class="alphabet">L</button>
+                <button class="alphabet">M</button>
+                <button class="alphabet">N</button>
+                <button class="alphabet">Ń</button>
+                <button class="alphabet">O</button>
+                <button class="alphabet">Ó</button>
+                <button class="alphabet">P</button>
+                <button class="alphabet">R</button>
+                <button class="alphabet">S</button>
+                <button class="alphabet">T</button>
+                <button class="alphabet">U</button>
+                <button class="alphabet">W</button>
+                <button class="alphabet">Y</button>
+                <button class="alphabet">Z</button>
+                <button class="alphabet">Ź</button>
+                <button class="alphabet">Ż</button>
+            </div>
         </div>
-        <div id="div zgadywanie" style="visibility: hidden">
-            <p id="haslo1">dfgdfgdfg</p>
-            Wprowadź litere: <input type="text" id="wprowadz_litere"><br>
-            <button onclick='document.getElementById("haslo1").innerHTML = czyJestTakiZnak(document.getElementById("wprowadz_litere").value, document.getElementById("haslo1").innerHTML);'>Sprawdź</button>
-        </div>
+        
     </body>
 </html>
