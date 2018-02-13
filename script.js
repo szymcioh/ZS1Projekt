@@ -14,8 +14,8 @@ function wprowadzHaslo(){
     var str = '';
     haslo = document.getElementById("wprowadz_haslo").value;
     haslo = haslo.toUpperCase();
-    document.getElementById('div wprowadz haslo').style.visibility = "hidden";
-    document.getElementById('div zgadywanie').style.visibility = "visible";
+    document.getElementById('password').style.display = "none";
+    document.getElementById('guess').style.visibility = "visible";document.getElementById('buttons').style.visibility = "visible";
     for (i = 0; i < haslo.length; i++)
         str += '_';
     document.getElementById('haslo1').innerHTML = str;
