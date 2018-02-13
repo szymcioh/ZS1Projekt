@@ -2,9 +2,12 @@ body{
     background: #4f5358;
     border: 0;
     margin: 0;
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #fff;
 }
 
 button:focus {outline:0;}
+input:focus {outline:0;}
 
 header{
     font-size: 4em;
@@ -14,7 +17,6 @@ header{
     align-items: flex-start;
     min-height: 22vh;
     line-height: 0px;
-    color:white;
 }
 
 #content{
@@ -26,6 +28,33 @@ header{
     align-items: center;
 }
 
+#password{
+    width: 100%;
+    height: 30%;
+    font-size:1.8em;
+}
+
+#password input, button{
+    background-color: #323539;
+    border:2px solid #727272;
+    border-radius: 12px;
+    font-family: 'Shadows Into Light Two', cursive;
+    color: white;
+    font-size: 1.5em;
+    width: 50%; 
+
+}
+
+#password button{
+    width: 20%;
+    transition: 0.25s background, border;
+}
+
+#password button:hover{
+    cursor: pointer;
+    border:solid 2px #a3a3a3;
+    background-color: #43464a;
+}
 #buttons{
     width:50%;
     height: 20%;
@@ -45,6 +74,7 @@ header{
     margin: 1% 1% 1% 1%;
     transition: 0.25s;
     font-family: 'Shadows Into Light Two', cursive;
+
 }
 
 .alphabet:hover{
