@@ -17,9 +17,9 @@ $(document).ready(function(){
     $(".alphabet").click(function(){
         var diviniation = $(this);
         if (czyJestTakiZnak(diviniation.html()))
-            diviniation.removeClass('alphabet').addClass('alphabetTrue');
+            diviniation.addClass('alphabetTrue');
         else
-            diviniation.removeClass('alphabet').addClass('alphabetFalse');
+            diviniation.addClass('alphabetFalse');
     });
     
 });
@@ -42,12 +42,11 @@ function wprowadzHaslo(){
         haslo = document.getElementById("wprowadz_haslo").value;
         haslo = haslo.toUpperCase();
         var str = '';
-        document.getElementById('guess').style.visibility = "visible";
-        document.getElementById('buttons').style.visibility = "visible";
+        document.getElementById('guess').style.display = "flex";
+        document.getElementById('buttons').style.display = "flex";
         for (i = 0; i < haslo.length; i++)
             str += '_';
         document.getElementById('haslo1').innerHTML = str;
-
 }
 
 /*function tworzenieButtonow(){                     PORZUCONY PROJEKT FUNKCJI DO TWORZENIA PRZYCISKOW
