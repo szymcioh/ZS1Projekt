@@ -4,15 +4,16 @@ var haslo = "";
 function czyJestTakiZnak(znak){
     var ciag = document.getElementById("haslo1").innerHTML;
     for (i = 0; i < haslo.length; i++)
-        if (haslo[i] == znak[0]){
-            ciag = ciag.substr(0, i) + znak[0] + ciag.substr(i + 1);
+        if (haslo[i] == znak){
+            ciag = ciag.substr(0, i) + znak + ciag.substr(i + 1);
         }
-    return(ciag);
+    document.getElementById("haslo1").innerHTML = ciag;
 }
 
 function wprowadzHaslo(){
     var str = '';
     haslo = document.getElementById("wprowadz_haslo").value;
+    haslo = haslo.toUpperCase();
     document.getElementById('div wprowadz haslo').style.visibility = "hidden";
     document.getElementById('div zgadywanie').style.visibility = "visible";
     for (i = 0; i < haslo.length; i++)
