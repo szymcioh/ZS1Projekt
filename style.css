@@ -24,6 +24,7 @@ header{
     widows: 100vw;
     padding: 0 10% 0 10%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
@@ -45,6 +46,10 @@ header{
 
 }
 
+#password input{
+    width:30%;
+}
+
 #password button{
     width: 20%;
     transition: 0.25s background, border;
@@ -55,6 +60,16 @@ header{
     border:solid 2px #a3a3a3;
     background-color: #43464a;
 }
+
+#guess{
+    width: 100%;
+    min-height: 15%;
+    font-size:4em;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 15px;
+}
+
 #buttons{
     width:50%;
     height: 20%;
