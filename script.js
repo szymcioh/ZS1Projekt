@@ -1,38 +1,52 @@
 var haslo = "";
+var bledy = 0;
 
 $(document).ready(function(){
     $("#password_button").click(function(){
-        haslo = document.getElementById("wprowadz_haslo").value;
-        haslo = haslo.toUpperCase();
         var diviniation = $("#password");
         diviniation.animate({
-            left: '-=1000px',
+            left: '-1000px',
             height: 0,
             width: 0
+        },400, function() {
+            diviniation.hide();
         });
-        var str = '';
-        //document.getElementById('password').style.display = "none";
-        document.getElementById('guess').style.visibility = "visible";
-        document.getElementById('buttons').style.visibility = "visible";
-        for (i = 0; i < haslo.length; i++)
-            str += '_';
-        document.getElementById('haslo1').innerHTML = str;
+        wprowadzHaslo();
+    });
+    
+    $(".alphabet").click(function(){
+        var diviniation = $(this);
+        if (czyJestTakiZnak(diviniation.html()))
+            diviniation.removeClass('alphabet').addClass('alphabetTrue');
+        else
+            diviniation.removeClass('alphabet').addClass('alphabetFalse');
     });
     
 });
 
 function czyJestTakiZnak(znak){
+    var jest = false;
     var ciag = document.getElementById("haslo1").innerHTML;
     for (i = 0; i < haslo.length; i++)
         if (haslo[i] == znak){
             ciag = ciag.substr(0, i) + znak + ciag.substr(i + 1);
+            jest = true;
         }
     document.getElementById("haslo1").innerHTML = ciag;
+    return jest;
 }
 
 
 
 function wprowadzHaslo(){
+        haslo = document.getElementById("wprowadz_haslo").value;
+        haslo = haslo.toUpperCase();
+        var str = '';
+        document.getElementById('guess').style.visibility = "visible";
+        document.getElementById('buttons').style.visibility = "visible";
+        for (i = 0; i < haslo.length; i++)
+            str += '_';
+        document.getElementById('haslo1').innerHTML = str;
 
 }
 
