@@ -7,30 +7,26 @@ $(document).ready(function(){
         if(wrongPass.val() != ""){
             var diviniation = $("#password");
             diviniation.animate({
-                left: '-1000px'
+                left: '-1500px'
             },1000, function() {
                 diviniation.hide(); 
             });	
             wprowadzHaslo();
-            
             document.getElementById('guess').style.display = "flex";
             document.getElementById('buttons').style.display = "flex";
-            var showUp1 = $("#guess");
-            var showUp2 = $("#buttons_background");
-            
-            setTimeout(function(){
-                showUp1.animate({
-                    left: '0'
-                });
-                showUp2.animate({
-                    left: '0%'
-                });
-            }, 200);
+            var showUp = $("#guess, #buttons");
+            //var pos = $("#place");
+           // var position = pos.position;
 
+            //document.getElementById('#wisielec').style.top=position.top + 'px';
+            showUp.animate({
+                left: '-150px'
+            }, 1000);
         }
         else
             $("#password").effect( "shake", {times:2}, 750 );
-        });
+    });
+    
     $(".alphabet").click(function(){
         var diviniation = $(this);
         if (czyJestTakiZnak(diviniation.html()))
@@ -63,6 +59,7 @@ function wprowadzHaslo(){
             str += '_';
         document.getElementById('haslo1').innerHTML = str;
 }
+
 
 /*function tworzenieButtonow(){                     PORZUCONY PROJEKT FUNKCJI DO TWORZENIA PRZYCISKOW
     const alfabet = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u', 'w', 'y', 'z', 'ź', 'ż']
