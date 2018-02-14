@@ -3,15 +3,24 @@ var bledy = 0;
 
 $(document).ready(function(){
     $("#password_button").click(function(){
-        var diviniation = $("#password");
-        diviniation.animate({
-            left: '-1000px',
-            height: 0,
-            width: 0
-        },400, function() {
-            diviniation.hide();
-        });
-        wprowadzHaslo();
+        var wrongPass = $("#wprowadz_haslo")
+        if(wrongPass.val() != ""){
+            var diviniation = $("#password");
+            diviniation.animate({
+                left: '-1000px'
+            },1000, function() {
+                diviniation.hide(); 
+            });	
+            wprowadzHaslo();
+            document.getElementById('guess').style.display = "flex";
+            document.getElementById('buttons').style.display = "flex";
+            var showUp = $("#guess");
+            diviniation.animate({
+                left: '-1000px'
+            }, 1000);
+        }
+        else
+            $("#password").effect( "shake", {times:2}, 750 );
     });
     
     $(".alphabet").click(function(){
@@ -42,8 +51,6 @@ function wprowadzHaslo(){
         haslo = document.getElementById("wprowadz_haslo").value;
         haslo = haslo.toUpperCase();
         var str = '';
-        document.getElementById('guess').style.display = "flex";
-        document.getElementById('buttons').style.display = "flex";
         for (i = 0; i < haslo.length; i++)
             str += '_';
         document.getElementById('haslo1').innerHTML = str;

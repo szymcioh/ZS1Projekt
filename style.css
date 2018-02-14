@@ -37,6 +37,8 @@ header{
     width: 100%;
     letter-spacing: 15px;
     transition: 0.5s;
+    position:absolute;
+    right:150%;
 }
 
 #password{
@@ -44,6 +46,7 @@ header{
     height: 30%;
     font-size:1.8em;
     position: relative;
+    display: block;
 }
 
 #password input, button{
@@ -78,6 +81,8 @@ header{
     display: none;
     justify-content: space-around;
     flex-wrap: wrap;
+    position:absolute;
+    left:500px;
 }
 
 .alphabet{
