@@ -12,17 +12,25 @@ $(document).ready(function(){
                 diviniation.hide(); 
             });	
             wprowadzHaslo();
+            
             document.getElementById('guess').style.display = "flex";
             document.getElementById('buttons').style.display = "flex";
-            var showUp = $("#guess");
-            diviniation.animate({
-                left: '-1000px'
-            }, 1000);
+            var showUp1 = $("#guess");
+            var showUp2 = $("#buttons_background");
+            
+            setTimeout(function(){
+                showUp1.animate({
+                    left: '0'
+                });
+                showUp2.animate({
+                    left: '0%'
+                });
+            }, 200);
+
         }
         else
             $("#password").effect( "shake", {times:2}, 750 );
-    });
-    
+        });
     $(".alphabet").click(function(){
         var diviniation = $(this);
         if (czyJestTakiZnak(diviniation.html()))
