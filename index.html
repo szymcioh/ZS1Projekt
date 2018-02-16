@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            <!-- Wersja 0.0.1 -->
-            Wisilec</title>
+            Wisielec</title>
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
@@ -13,23 +12,34 @@
     </head>
     <body onload=''>
         <header>
-            <h1>Wisiele_</h1>
+            <h1>Wisiele<span id="place">_</span></h1>
         </header>
         
-        <div id="content">
+        
 
+            <div id="wisielec">
+                <img class="hang" src="img/wisielec-glowa.png" style="width:80%;" id="head">
+                <img class="hang" src="img/wisielec-brzuch.png" style="width:40%;" id="stomach">
+                <img class="hang" src="img/wisielec-reka-l.png"  id="handL">
+                <img class="hang" src="img/wisielec-reka-p.png"  id="handR">
+                <img class="hang" src="img/wisielec-noga-p.png"  id="legR">
+                <img class="hang" src="img/wisielec-noga-l.png"  id="legL">
+            </div>
+            
+        <div id="content">
             <div id="guess">
-                <p id="haslo1"></p><br>
+                <p id="haslo1"></p>
             </div>
             
             <div id="password">
-                <h2>Wprowadź hasło:</h2><input type="text" id="wprowadz_haslo" placeholder="samolot">
+                <h2>Wprowadź hasło:</h2>
+                <input type="text" id="wprowadz_haslo" placeholder="samolot">
                 <button id="password_button">Gotowe</button>
             </div>
 
 
-            
-            <div id="buttons" style="visibility: hidden">
+         <div id=buttons_background>
+            <div id="buttons">
                 <button class= "alphabet">A</button>
                 <button class= "alphabet">Ą</button>
                 <button class= "alphabet">B</button>
@@ -45,6 +55,7 @@
                 <button class= "alphabet">J</button>
                 <button class= "alphabet">K</button>
                 <button class= "alphabet">L</button>
+                <button class= "alphabet">Ł</button>
                 <button class= "alphabet">M</button>
                 <button class= "alphabet">N</button>
                 <button class= "alphabet">Ń</button>
@@ -62,13 +73,8 @@
                 <button class= "alphabet">Ź</button>
                 <button class= "alphabet">Ż</button>
             </div>
-            
-            <div class="elementywisielca">
-                <img src="graphic/1.png" >
-            </div>
-
-            
         </div>
+     </div>
         
     </body>
 </html>

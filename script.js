@@ -2,10 +2,10 @@ var haslo = "";
 var bledy = 0;
 
 $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery korzystaja z gotowcow" - Szymon Horzela)
-  var $elementywisielca = $(".elementywisielca"),
+  var $hang = $(".hang"),
       xPos,
       yPos;
-  $(document).on("mousedown", ".elementywisielca", function(evt) {
+  $(document).on("mousedown", ".hang", function(evt) {
     $(this).addClass("active").removeClass("transitioned");
     var realTop = parseInt($(this).offset().top, 10),
         realLeft = parseInt($(this).offset().left, 10);
@@ -13,14 +13,14 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
     yPos = evt.pageY - realTop;
 
     $(document).on("mousemove", function(e) {
-      if ($elementywisielca.hasClass("active")) {
+      if ($hang.hasClass("active")) {
         var x = e.pageX,
             y = e.pageY,
             realX = x -xPos,
             realY = y - yPos,
             newX = realX - realLeft,
             newY = realY - realTop;
-        $elementywisielca.css("transform", "translateX("+ newX +"px) translateY("+ newY +"px)");
+        $hang.css("transform", "translateX("+ newX +"px) translateY("+ newY +"px)");
       };
     });
 
@@ -35,18 +35,18 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
           smallY = parseInt(Math.floor((realY - realTop)/5), 10),
           dispX = parseInt(Math.floor((realX - realLeft)/10), 10),
           dispY = parseInt(Math.floor((realY - realTop)/10), 10);
-      if ($elementywisielca.hasClass("active")) {
-        $elementywisielca.removeClass("active").addClass("transitioned");
+      if ($hang.hasClass("active")) {
+        $hang.removeClass("active").addClass("transitioned");
         if (newX || newY) {
-          $elementywisielca.css("transform", "translateX("+ (newX - dispX) +"px) translateY("+ (newY - dispY) +"px)");
+          $hang.css("transform", "translateX("+ (newX - dispX) +"px) translateY("+ (newY - dispY) +"px)");
           setTimeout(function() {
-            $elementywisielca.css("transform", "translateX("+ (newX + dispX) +"px) translateY("+ (newY + dispY) +"px)");
+            $hang.css("transform", "translateX("+ (newX + dispX) +"px) translateY("+ (newY + dispY) +"px)");
           }, 380);
           setTimeout(function() {
-            $elementywisielca.css("transform", "translateX("+ smallX +"px) translateY("+ smallY +"px)");
+            $hang.css("transform", "translateX("+ smallX +"px) translateY("+ smallY +"px)");
           }, 420);
           setTimeout(function() {
-            $elementywisielca.css("transform", "translateZ(0)");
+            $hang.css("transform", "translateZ(0)");
           }, 700);
         }
       }
@@ -58,35 +58,43 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
 
     return false; 
   });
-});  //Koniec gotowca
-
+  //Koniec gotowca
+    
     $("#password_button").click(function(){
-        var diviniation = $("#password");
-        diviniation.animate({
-            left: '-1000px',
-            height: 0,
-            width: 0
-        },400, function() {
-            diviniation.hide();
-        });
-        wprowadzHaslo();
+        var wrongPass = $("#wprowadz_haslo")
+        if(wrongPass.val() != ""){
+            var diviniation = $("#password");
+            diviniation.animate({
+                left: '-1500px'
+            },1000, function() {
+                diviniation.hide(); 
+            });	
+            wprowadzHaslo();
+            document.getElementById('guess').style.display = "flex";
+            document.getElementById('buttons').style.display = "flex";
+            var showUp1 = $("#guess");
+            var showUp2 = $("#buttons_background");
+            
+            setTimeout(function(){
+                showUp1.animate({
+                    left: '0'
+                });
+                showUp2.animate({
+                    left: '0%'
+                });
+            }, 200);
+        }
+        else
+            $("#password").effect( "shake", {times:2}, 750 );
     });
     
     $(".alphabet").click(function(){
         var diviniation = $(this);
         if (czyJestTakiZnak(diviniation.html()))
-            diviniation.removeClass('alphabet').addClass('alphabetTrue');
+            diviniation.addClass('alphabetTrue');
         else
-            diviniation.removeClass('alphabet').addClass('alphabetFalse');
+            diviniation.addClass('alphabetFalse');
     });
-    
-    $( ".alphabet" ).hover(
-      function() {
-        $( this ).addClass( "alphabethover" );
-      }, function() {
-        $( this ).removeClass( "alphabethover" );
-      }
-    );
     
 });
 
@@ -108,13 +116,11 @@ function wprowadzHaslo(){
         haslo = document.getElementById("wprowadz_haslo").value;
         haslo = haslo.toUpperCase();
         var str = '';
-        document.getElementById('guess').style.visibility = "visible";
-        document.getElementById('buttons').style.visibility = "visible";
         for (i = 0; i < haslo.length; i++)
             str += '_';
         document.getElementById('haslo1').innerHTML = str;
-
 }
+
 
 /*function tworzenieButtonow(){                     PORZUCONY PROJEKT FUNKCJI DO TWORZENIA PRZYCISKOW
     const alfabet = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u', 'w', 'y', 'z', 'ź', 'ż']
