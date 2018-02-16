@@ -1,3 +1,33 @@
+*, *:before, *:after {
+  margin: 0;
+  box-sizing: border-box;
+}
+.cont {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.transitioned {
+  transition: transform 0.5s;
+}
+
+.hang{
+    width: 30%;
+    height: 30%;
+   
+}
+
+#wisilec{
+    top: 5%;
+    right: 1000px;
+    position: absolute;
+    width: 30%;
+    height: 40%;
+    border: 1px solid white;
+}
+
+
 body{
     background: #4f5358;
     border: 0;
@@ -22,8 +52,9 @@ header{
 /*WISIELEC*/
 #wisielec{
     max-width:10%;
-    max-height:15%;
+    min-height:20vh;
     position:relative;
+    z-index: 2;
 }
 
 #wisielec img{
@@ -31,29 +62,33 @@ header{
     height: auto;
 }
 
+#stomach, #handR, #handL, #LegL, #legR{
+    position:absolute;
+}
 
 #head{
     transform: translate(12%);
 }
 
 #stomach{
-    transform: translate(75%,-10%);
+    transform: translate(-120%,130%);
 }
 
 #handR{
-    transform: translate(12%, -235%);
+    transform: translate(-250%, 295%);
 }
 
 #handL{
-    transform: translate(65%, -110%);
+    transform: translate(-35%, 335%);
 }
 
 #legR{
-    transform: translate(-65%, -30%);
+    transform: translate(-220%, 290%);
 }
 
 #legL{
-    transform: translate(190%, -140%);
+    transform: translate(-60%, 270%);
+    position:absolute;
 }
 
 
