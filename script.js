@@ -6,6 +6,7 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
       xPos,
       yPos;
   $(document).on("mousedown", ".hang", function(evt) {
+    $hang = $(this),
     $(this).addClass("active").removeClass("transitioned");
     var realTop = parseInt($(this).offset().top, 10),
         realLeft = parseInt($(this).offset().left, 10);
