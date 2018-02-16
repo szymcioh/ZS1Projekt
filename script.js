@@ -14,14 +14,17 @@ $(document).ready(function(){
             wprowadzHaslo();
             document.getElementById('guess').style.display = "flex";
             document.getElementById('buttons').style.display = "flex";
-            var showUp = $("#guess, #buttons");
-            //var pos = $("#place");
-           // var position = pos.position;
-
-            //document.getElementById('#wisielec').style.top=position.top + 'px';
-            showUp.animate({
-                left: '-150px'
-            }, 1000);
+            var showUp1 = $("#guess");
+            var showUp2 = $("#buttons_background");
+            
+            setTimeout(function(){
+                showUp1.animate({
+                    left: '0'
+                });
+                showUp2.animate({
+                    left: '0%'
+                });
+            }, 200);
         }
         else
             $("#password").effect( "shake", {times:2}, 750 );
