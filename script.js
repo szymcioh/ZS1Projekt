@@ -2,7 +2,7 @@ var haslo = "";
 var bledy = 0;
 
 $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery korzystaja z gotowcow" - Szymon Horzela)
-  var $hang = $(".hang"),
+  /*var $hang = $(".hang"),
       xPos,
       yPos;
   $(document).on("mousedown", ".hang", function(evt) {
@@ -59,7 +59,111 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
 
     return false; 
   });
-  //Koniec gotowca
+  //Koniec gotowca */
+   $('img').on('dragstart', function(event) { event.preventDefault(); }); 
+    var listaObiektow = [];
+    var chosed;
+    var chosedSpec;
+    var wybranoObiekt = false;
+    var mouseX, mouseY = 0;
+    
+    function pozycjeStartowe(Id, X, Y) { //klasa przechowujaca informacje o obiektach wisielca
+        this.Id = Id;
+        this.X = X;
+        this.Y = Y;
+        console.log('Utworzono obiekt' + this.Id + 'o wspolrzednych(' + this.X + ' ' + this.Y + ')');
+    }
+    
+    $(".hang").each(function(){  //tworzenie nowych obiektow klasy pozycjeStartowe i zapisywanie ich w tablicy
+        var handle = $(this);
+        obiekt = new pozycjeStartowe(handle.attr('id'), handle.position().left, handle.position().top);
+        listaObiektow.push(obiekt);
+    });
+    
+    $(".hang").mousedown(function(e){
+        chosed = $(this);
+        listaObiektow.forEach(function(entry) { //odnajdywanie klasy w ktorej zapisano informacje o wisielcu
+            if(entry.Id == chosed.attr('id')){
+                chosedSpec = entry;
+            }
+        });
+        mouseX = e.pageX - chosedSpec.X; //odleglosc kursora myszki od obiektu w chwili nacisniecia przycisku
+        mouseY = e.pageY - chosedSpec.Y;
+        wybranoObiekt = true;
+    });
+    
+    $(document).mouseup(function() {
+        if (wybranoObiekt){
+            powrotObiektu();
+        }
+    });
+    
+    $(document).mousemove(function(e){
+        if(wybranoObiekt){  
+            var newX = e.pageX - mouseX; //pozycja myszki - (pozycja myszki - bazowa pozycja) = nowa pozycja 
+            var newY = e.pageY - mouseY;
+            newX -= chosedSpec.X;
+            newY -= chosedSpec.Y;
+            if (Math.sqrt(newX*newX + newY*newY) > 700){
+                powrotObiektu();
+            }
+            else{
+                newX = chosedSpec.X + ((newX-(Math.abs(newX)*newX/1500))/2);
+                newY = chosedSpec.Y + ((newY-(Math.abs(newY)*newY/1500))/2);
+                chosed.css('left', newX);
+                chosed.css('top', newY);
+            }
+        } 
+    });
+    
+    function powrotObiektu(){
+        var newX, newY;
+        wybranoObiekt = false;
+        var odlegloscX = chosed.position().left - chosedSpec.X;
+        var ped = odlegloscX / 8;
+        var timer1 = setInterval(function(){
+            odlegloscX = chosed.position().left - chosedSpec.X;
+            if (odlegloscX > 0){
+                ped = (ped - 2) * 0.95;
+            }    
+            if(odlegloscX < 0){
+                ped= (ped + 2) * 0.95;
+            }
+            newX = chosed.position().left + ped;
+            chosed.css('left', newX);
+            if((Math.abs(ped) < 5) && (Math.abs(odlegloscX) < 5)){
+                chosed.css('left', chosedSpec.X);
+                chosed.css('top', chosedSpec.Y);
+                clearInterval(timer1);
+            }
+        }, 10);
+    }
+    
+    function log(text){
+        document.getElementById("log").innerHTML += text + " ";
+    }
+    
+    /*            var newX, newY;
+            ped = ((Math.abs(chosed.position().left - chosedSpec.X)) * 0.15);
+            if (ped < 3){
+                chosed.css('left', chosedSpec.X);
+                chosed.css('top', chosedSpec.Y);
+                clearInterval(timer1);
+            }
+            while (ped > 2){
+                if (chosed.position().left < chosedSpec.x){
+                    newX = chosed.position().left + ped; 
+                    console.log('prawo');}
+                else{
+                    newX = chosed.position().left - ped; 
+                    console.log(chosed.position().left + ' ' + ped + ' ' + chosedSpec.X);}
+                chosed.css('left', newX);
+                ped -= 0.5;
+            }*/
+        
+
+    
+    
     
     $("#password_button").click(function(){
         var wrongPass = $("#wprowadz_haslo")
