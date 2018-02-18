@@ -116,53 +116,51 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
         } 
     });
     
+    $(".hang").on("dragenter", function(event) {
+        $(this).hide();
+      });
+    
     function powrotObiektu(){
         var newX, newY;
         wybranoObiekt = false;
         var odlegloscX = chosed.position().left - chosedSpec.X;
-        var ped = odlegloscX / 8;
+        var pedX = odlegloscX / 8;
+        
+        var odlegloscY = chosed.position().top - chosedSpec.Y;
+        var pedY = odlegloscY / 8;
+        
         var timer1 = setInterval(function(){
             odlegloscX = chosed.position().left - chosedSpec.X;
             if (odlegloscX > 0){
-                ped = (ped - 2) * 0.95;
+                pedX = (pedX - 2) * 0.90;
             }    
             if(odlegloscX < 0){
-                ped= (ped + 2) * 0.95;
+                pedX= (pedX + 2) * 0.90;
             }
-            newX = chosed.position().left + ped;
+            newX = chosed.position().left + pedX;
+            
+            odlegloscY = chosed.position().top - chosedSpec.Y;
+            if (odlegloscY > 0){
+                pedY = (pedY - 2) * 0.90;
+            }    
+            if(odlegloscY < 0){
+                pedY= (pedY + 2) * 0.90;
+            }
+            newY = chosed.position().top + pedY;
+            
+            chosed.css('top', newY);
             chosed.css('left', newX);
-            if((Math.abs(ped) < 5) && (Math.abs(odlegloscX) < 5)){
+            if((Math.abs(pedX) < 5) && (Math.abs(odlegloscX) < 5) && (Math.abs(pedY) < 5) && (Math.abs(odlegloscY) < 5)){
                 chosed.css('left', chosedSpec.X);
                 chosed.css('top', chosedSpec.Y);
                 clearInterval(timer1);
             }
-        }, 10);
+        }, 20);
     }
     
     function log(text){
         document.getElementById("log").innerHTML += text + " ";
-    }
-    
-    /*            var newX, newY;
-            ped = ((Math.abs(chosed.position().left - chosedSpec.X)) * 0.15);
-            if (ped < 3){
-                chosed.css('left', chosedSpec.X);
-                chosed.css('top', chosedSpec.Y);
-                clearInterval(timer1);
-            }
-            while (ped > 2){
-                if (chosed.position().left < chosedSpec.x){
-                    newX = chosed.position().left + ped; 
-                    console.log('prawo');}
-                else{
-                    newX = chosed.position().left - ped; 
-                    console.log(chosed.position().left + ' ' + ped + ' ' + chosedSpec.X);}
-                chosed.css('left', newX);
-                ped -= 0.5;
-            }*/
-        
-
-    
+    }  
     
     
     $("#password_button").click(function(){
