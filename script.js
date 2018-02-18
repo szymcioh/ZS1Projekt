@@ -104,7 +104,7 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
             var newY = e.pageY - mouseY;
             newX -= chosedSpec.X;
             newY -= chosedSpec.Y;
-            if (Math.sqrt(newX*newX + newY*newY) > 700){
+            if (Math.sqrt(newX*newX + newY*newY) > 800){
                 powrotObiektu();
             }
             else{
@@ -116,18 +116,16 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
         } 
     });
     
-    $(".hang").on("dragenter", function(event) {
-        $(this).hide();
-      });
+        
     
     function powrotObiektu(){
         var newX, newY;
         wybranoObiekt = false;
         var odlegloscX = chosed.position().left - chosedSpec.X;
-        var pedX = odlegloscX / 8;
+        var pedX = odlegloscX / 4;
         
         var odlegloscY = chosed.position().top - chosedSpec.Y;
-        var pedY = odlegloscY / 8;
+        var pedY = odlegloscY / 4;
         
         var timer1 = setInterval(function(){
             odlegloscX = chosed.position().left - chosedSpec.X;
@@ -150,6 +148,20 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
             
             chosed.css('top', newY);
             chosed.css('left', newX);
+            
+            
+            
+            $(".hang").each(function() {
+                if ($(this).attr('id') != chosed.attr('id')){
+                    var kolizje = $(chosed).collision($(this));
+                    if ( !kolizje.is(':animated') ){
+                        kolizje.animate({ "left": "+=" + pedX + "px", "top": "+=" + pedY + "px"  }, "fast" );
+                        kolizje.animate({ "left": "-=" + pedX + "px", "top": "-=" + pedY + "px"  }, "fast" );
+                    }
+                }
+            });
+            delete kolizje;   
+            
             if((Math.abs(pedX) < 5) && (Math.abs(odlegloscX) < 5) && (Math.abs(pedY) < 5) && (Math.abs(odlegloscY) < 5)){
                 chosed.css('left', chosedSpec.X);
                 chosed.css('top', chosedSpec.Y);
