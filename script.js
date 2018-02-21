@@ -1,71 +1,36 @@
 var haslo = "";
 var bledy = 0;
 
-$(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery korzystaja z gotowcow" - Szymon Horzela)
-  /*var $hang = $(".hang"),
-      xPos,
-      yPos;
-  $(document).on("mousedown", ".hang", function(evt) {
-    $hang = $(this),
-    $(this).addClass("active").removeClass("transitioned");
-    var realTop = parseInt($(this).offset().top, 10),
-        realLeft = parseInt($(this).offset().left, 10);
-    xPos = evt.pageX - realLeft;
-    yPos = evt.pageY - realTop;
-
-    $(document).on("mousemove", function(e) {
-      if ($hang.hasClass("active")) {
-        var x = e.pageX,
-            y = e.pageY,
-            realX = x -xPos,
-            realY = y - yPos,
-            newX = realX - realLeft,
-            newY = realY - realTop;
-        $hang.css("transform", "translateX("+ newX +"px) translateY("+ newY +"px)");
-      };
-    });
-
-    function mouseUpFunc(e) {
-      var x = e.pageX, 
-          y = e.pageY,
-          realX = x - xPos,
-          realY = y - yPos,
-          newX = parseInt(Math.floor((0 - (realX - realLeft))/3), 10),
-          newY = parseInt(Math.floor((0 - (realY - realTop))/3), 10),
-          smallX = parseInt(Math.floor((realX - realLeft)/5), 10),
-          smallY = parseInt(Math.floor((realY - realTop)/5), 10),
-          dispX = parseInt(Math.floor((realX - realLeft)/10), 10),
-          dispY = parseInt(Math.floor((realY - realTop)/10), 10);
-      if ($hang.hasClass("active")) {
-        $hang.removeClass("active").addClass("transitioned");
-        if (newX || newY) {
-          $hang.css("transform", "translateX("+ (newX - dispX) +"px) translateY("+ (newY - dispY) +"px)");
-          setTimeout(function() {
-            $hang.css("transform", "translateX("+ (newX + dispX) +"px) translateY("+ (newY + dispY) +"px)");
-          }, 380);
-          setTimeout(function() {
-            $hang.css("transform", "translateX("+ smallX +"px) translateY("+ smallY +"px)");
-          }, 420);
-          setTimeout(function() {
-            $hang.css("transform", "translateZ(0)");
-          }, 700);
-        }
-      }
-    }
-
-    $(document).on("mouseup", function(e) {
-      mouseUpFunc(e);
-    });
-
-    return false; 
-  });
-  //Koniec gotowca */
+$(document).ready(function(){ 
    $('img').on('dragstart', function(event) { event.preventDefault(); }); 
     var listaObiektow = [];
     var chosed;
     var chosedSpec;
     var wybranoObiekt = false;
     var mouseX, mouseY = 0;
+    responsywnoscWisielca();
+    zapisPozycji();
+      
+    function responsywnoscWisielca(){
+        var ośY = 0;
+        $("#head").css("left", ośY - $("#head").width()/2);
+        $("#head").css("top", '0');
+
+        $("#stomach").css("left", ośY - $("#stomach").width()/2);
+        $("#stomach").css("top", $("#head").height());
+
+        $("#handL").css("left", ośY + ($("#stomach").width()/2) * 0.75);
+        $("#handL").css("top", $("#head").height());
+
+        $("#handR").css("left", ośY - $("#stomach").width());
+        $("#handR").css("top", $("#head").height());
+
+        $("#legR").css("left", ośY - $("#stomach").width());
+        $("#legR").css("top", $("#head").height() + $("#stomach").width());
+
+        $("#legL").css("left", ośY + ($("#stomach").width()/2) * 0.75);
+        $("#legL").css("top", $("#head").height() + $("#stomach").width());
+    }
     
     function pozycjeStartowe(Id, X, Y) { //klasa przechowujaca informacje o obiektach wisielca
         this.Id = Id;
@@ -74,10 +39,19 @@ $(document).ready(function(){ //Poczatek gotowca do animacji ("tylko frajery kor
         console.log('Utworzono obiekt' + this.Id + 'o wspolrzednych(' + this.X + ' ' + this.Y + ')');
     }
     
-    $(".hang").each(function(){  //tworzenie nowych obiektow klasy pozycjeStartowe i zapisywanie ich w tablicy
-        var handle = $(this);
-        obiekt = new pozycjeStartowe(handle.attr('id'), handle.position().left, handle.position().top);
-        listaObiektow.push(obiekt);
+    function zapisPozycji(){
+        var i = 0;
+        $(".hang").each(function(){  //tworzenie nowych obiektow klasy pozycjeStartowe i zapisywanie ich w tablicy
+            var handle = $(this);
+            obiekt = new pozycjeStartowe(handle.attr('id'), handle.position().left, handle.position().top);
+            listaObiektow[i] = (obiekt);
+            i++;
+        });
+    }
+    
+    $(window).resize(function() {
+        responsywnoscWisielca();
+        zapisPozycji();
     });
     
     $(".hang").mousedown(function(e){
@@ -235,11 +209,3 @@ function wprowadzHaslo(){
             str += '_';
         document.getElementById('haslo1').innerHTML = str;
 }
-
-
-/*function tworzenieButtonow(){                     PORZUCONY PROJEKT FUNKCJI DO TWORZENIA PRZYCISKOW
-    const alfabet = ['a', 'ą', 'b', 'c', 'ć', 'd', 'e', 'ę', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'o', 'ó', 'p', 'r', 's', 'ś', 't', 'u', 'w', 'y', 'z', 'ź', 'ż']
-    for (i = 0; i < alfabet.length; i++){
-        document.getElementById("div przyciski").innerHTML += "<button class='przyciskiLiter' onclick='czyJestTakiZnak('" + alfabet[i] + "')'></button>"
-    }
-}*/

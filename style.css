@@ -60,60 +60,7 @@ header{
 #stomach, #handR, #handL, #LegL, #legR, #head{
     position:absolute;
 }
-/*
-#head{
-    transform: translate(12%, 1%);
-}
-
-#stomach{
-    transform: translate(-120%,130%);
-}
-
-#handR{
-    transform: translate(-250%, 295%);
-}
-
-#handL{
-    transform: translate(-35%, 335%);
-}
-
-#legR{
-    transform: translate(-220%, 290%);
-}
-
 #legL{
-    transform: translate(-60%, 270%);
-    position: absolute;
-}*/
-
-#head{
-    top:%;
-    left:5%;
-}
-
-#stomach{
-    top:55%;
-    left:25%;
-}
-
-#handR{
-    top:60%;
-    left:0%;
-}
-
-#handL{
-    top:60%;
-    left:63%;
-}
-
-#legR{
-    top:95%;
-    left:10%;
-}
-
-#legL{
-    top:95%;
-    left:48%;
     position: absolute;
 }
 
