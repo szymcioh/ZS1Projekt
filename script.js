@@ -185,8 +185,8 @@ $(document).ready(function(){
             diviniation.addClass('alphabetFalse');
             bledy ++;
             console.log(bledy);
-            
         }
+        pokazWisielca();
     });
     
 });
@@ -216,17 +216,25 @@ function wprowadzHaslo(){
 
 function pokazWisielca(){
     if(bledy==1){
-        $('#head').css.style.visibility="visible";
-    }else if(bledy==2){
-        $('#stomach').css.style.visibility="visible";
-    }else if(bledy==3){
-        $('#handR').css.style.visibility="visible";
-    }else if(bledy==4){
-        $('#handL').css.style.visibility="visible";
-    }else if(bledy==5){
-        $('#legR').css.style.visibility="visible";
-    }else if(bledy==6){
-        $('#legL').css.style.visibility="visible";
+        $('#head').css("visibility","visible");
+    }
+    if(bledy==2){
+        $('#stomach').css("visibility","visible");
+    }
+    if(bledy==3){
+        $('#handR').css("visibility","visible");
+    }
+    if(bledy==4){
+        $('#handL').css("visibility","visible");
+    }
+    if(bledy==5){
+        $('#legR').css("visibility","visible");
+    }
+    if(bledy==6){
+        $('#legL').css("visibility","visible");
+        $('#buttons').css("visibility","hidden");
+        $('#guess').css("visibility","hidden");
+        document.getElementById('loseOrWin').innerHTML ="Przegrałeś!"
     }
     
 }
