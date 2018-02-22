@@ -176,6 +176,7 @@ header{
 }
 
 #loseOrWin{
+    display: none;
     padding-top:10%;
     font-size:5em;
 }

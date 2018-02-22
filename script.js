@@ -2,6 +2,9 @@ var haslo = "";
 var bledy = 0;
 
 $(document).ready(function(){ 
+    //$(".hang").css('visibility', 'hidden');
+    
+    
    $('img').on('dragstart', function(event) { event.preventDefault(); }); 
     var listaObiektow = [];
     var chosed;
@@ -179,14 +182,20 @@ $(document).ready(function(){
     
     $(".alphabet").click(function(){
         var diviniation = $(this);
-        if (czyJestTakiZnak(diviniation.html()))
+        if (czyJestTakiZnak(diviniation.html())){
             diviniation.addClass('alphabetTrue');
+            if (!document.getElementById("haslo1").innerHTML.includes("_")){
+                $('#buttons').hide();
+                $('#guess').css("visiblity", "none");
+                document.getElementById('loseOrWin').innerHTML ="Wygrałeś!";
+            }
+        }
         else{
             diviniation.addClass('alphabetFalse');
             bledy ++;
             console.log(bledy);
+            pokazWisielca();
         }
-        pokazWisielca();
     });
     
 });
@@ -232,9 +241,11 @@ function pokazWisielca(){
     }
     if(bledy==6){
         $('#legL').css("visibility","visible");
-        $('#buttons').css("visibility","hidden");
         $('#guess').css("visibility","hidden");
-        document.getElementById('loseOrWin').innerHTML ="Przegrałeś!"
+        $(".hang").css('visibility', 'hidden');
+        $('#buttons').hide(1000);
+        $('#loseOrWin').show(1000);
+        document.getElementById('loseOrWin').innerHTML ="Przegrałeś!";
     }
     
 }
