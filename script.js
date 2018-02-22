@@ -181,8 +181,12 @@ $(document).ready(function(){
         var diviniation = $(this);
         if (czyJestTakiZnak(diviniation.html()))
             diviniation.addClass('alphabetTrue');
-        else
+        else{
             diviniation.addClass('alphabetFalse');
+            bledy ++;
+            console.log(bledy);
+            
+        }
     });
     
 });
@@ -208,4 +212,21 @@ function wprowadzHaslo(){
         for (i = 0; i < haslo.length; i++)
             str += '_';
         document.getElementById('haslo1').innerHTML = str;
+}
+
+function pokazWisielca(){
+    if(bledy==1){
+        $('#head').css.style.visibility="visible";
+    }else if(bledy==2){
+        $('#stomach').css.style.visibility="visible";
+    }else if(bledy==3){
+        $('#handR').css.style.visibility="visible";
+    }else if(bledy==4){
+        $('#handL').css.style.visibility="visible";
+    }else if(bledy==5){
+        $('#legR').css.style.visibility="visible";
+    }else if(bledy==6){
+        $('#legL').css.style.visibility="visible";
+    }
+    
 }
