@@ -1,0 +1,99 @@
+.base{
+	border: solid lightblue 2px;
+	border-radius:100px;
+	background-color: white;
+}
+.enemy{
+	background-color: pink;
+	border-radius:100px;
+}
+.bullet{
+	background-color: orange;
+	border-radius:100px;
+}
+.pointer{
+	background-color: lightblue;
+	border-radius:100px;
+}
+.explosion{
+	border: solid blue 5px;
+	border-radius:100px;
+}
+.blue_explosion{
+	border: solid red 5px;
+	border-radius:100px;
+}
+.limit{
+	color: lightblue;
+	border-style: solid;
+}
+#gamebox{
+	position: relative;
+	margin: auto;
+	border: solid black 3px;
+	width: 800px;
+	height: 600px;
+	overflow: hidden;
+}
+button{
+	font-family: calibri;
+	z-index: 1;
+	border: solid black 2px;
+	background-color: white;
+	padding: 0;
+	line-height: 1;
+	width: 40px;
+	height: 40px;
+	font-size: 20px;
+	margin-top: 4px;
+	margin-left: 6px;
+	opacity: 0.4;
+	font-weight: bold;
+}
+.textfield{
+	padding: 0;
+	line-height: 1.5;
+	z-index: 1;
+	font-family: calibri;
+	font-size: 20px;
+	text-align: center;
+	background-color: white;
+	border: 2px solid lightblue;
+	color: gray;
+	font-weight: bold;
+}
+.score{
+	font-family: calibri;
+	margin-left: 10px;
+	margin-top: 24px;
+	line-height: 0;
+	font-size: 20;
+	color: black;
+	opacity: 0.8;
+	font-weight: bold;
+}
+.fps{
+	font-family: calibri;
+	margin-right: 10px;
+	margin-top: 24px;
+	line-height: 0;
+	font-size: 20;
+	color: black;
+	opacity: 0.8;
+	font-weight: bold;
+}
+.hp{
+	border-color: red;
+	color: black;
+}
+.pause{
+	border-color: green;
+	color: black;
+}
+.restart{
+	border-color: blue;
+	color: black;
+}
+.hp:hover{opacity:0.8;}
+.pause:hover{opacity:0.8;}
+.restart:hover{opacity:0.8;}

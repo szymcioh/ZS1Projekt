@@ -1,0 +1,50 @@
+body{
+    margin:0;
+    padding: 0;
+    background: #c1c1c1;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-around;
+    align-items: center;
+    font-family: courier;
+    font-size: 3em;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1{
+    color: white;
+    z-index: 2;
+}
+
+.TD, .hanger{
+    min-width: 50vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    border-right:3px solid white;
+    transition:0.3s ;
+    -webkit-filter: grayscale(100%);
+
+
+}
+
+.TD img{
+    width: 80%;
+    height: auto;
+}
+
+.TD:hover, .hanger:hover{
+    font-size:1.05em;
+    background-color: #a1a1a1;
+    -webkit-filter: grayscale(0%);
+}
+
+.hanger img{
+    width: 78%;
+    height: auto;
+}
